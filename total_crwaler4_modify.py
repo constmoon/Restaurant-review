@@ -6,7 +6,7 @@ start_time = time.time()
 
 #쓸데없는 스크립트 제거함수
 def onlytext(string):
-    string=string.replace('<div align="center">', ' / ')
+    string=string.replace('<div align="center">', ' / ') # 이것만 따로 보기??
     #string = string.replace('<br/>', ' / ')
     string = string.replace('<br>', ' / ')
     #string = string.replace('<p>', ' / ' )
