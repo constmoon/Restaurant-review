@@ -50,15 +50,18 @@ def tokenize(nlp,data):
             dataset_labels.append(type)
             print(string)
 
-        clf =svm.SVC(kernel='linear', C=1)
-        vectorizer = TfidfVectorizer(lowercase=False)
-        vtr_dataset = vectorizer.fit_transform(dataset_data)
+    clf(dataset_data, dataset_labels)
 
-        scores = cross_val_score(clf, vtr_dataset, dataset_labels, cv=5)
-        print(print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)))
+def clf(dataset_data,dataset_labels):
+    clf =svm.SVC(kernel='linear', C=1)
+    vectorizer = TfidfVectorizer(lowercase=False)
+    vtr_dataset = vectorizer.fit_transform(dataset_data)
+
+    scores = cross_val_score(clf, vtr_dataset, dataset_labels, cv=5)
+    print(print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2)))
 
 
-        print("time: "+start_time)
+    print("time: ", start_time)
 
 
 tokenize(nlp,data_)
