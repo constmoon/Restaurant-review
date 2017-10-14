@@ -42,13 +42,14 @@ def tokenize(nlp,data):
                 if string == ('연락처Nn' or '전화번호Nn' or '전번Nn' or '전화Nn'):
                     string = '폰넘버Nn'
 
-                if not string[len(string)-3:] == "pn":
+
+                #문장부호는 끝에 pn이라고 붙는데 이걸 방지
+                if not string[len(string)-3:] == "Pn":
                     templist.append(string)
 
 
             dataset_data.append(string)
             dataset_labels.append(type)
-            print(string)
 
     clf(dataset_data, dataset_labels)
 
