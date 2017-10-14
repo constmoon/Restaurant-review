@@ -12,7 +12,7 @@ import time
 
 start_time = time.time()
 nlp = Twitter()  # Twitter 라이브러리 사용
-data_ = csv.reader(open("reviews_rawdata_4.txt",'r',encoding='utf-8'),delimiter='\t')
+data_ = csv.reader(open("4test.txt",'r',encoding='utf-8'),delimiter='\t')
 
 def tokenize(nlp,data):
     train_data = []
