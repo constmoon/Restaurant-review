@@ -30,10 +30,12 @@ def analysis():
 def info():
     new_win = Tk()
     new_win.title("Information")
-    new_win.geometry("850x700")
-    sen = "0.1.0 ver. \n\n 해당 서비스는 기계학습을 통해 만들어진 리뷰 판별 모델을 이용하여 리뷰를 분석합니다.\n\n\n 1. 진짜 리뷰와 가짜 리뷰 글이 정말로 차이가 있나요?\n저희는 이를 검증하기 위해 네이버 블로그 중 맛집에 관련된 포스팅을 수집했습니다.\n수집한 포스팅은 총 11510개로 진짜 리뷰는 5368, 거짓 리뷰는 5782개였습니다.\n\n수집 리뷰의 판별 방법은 다음과 같습니다.\n\n진짜 리뷰 : “사비로 먹었다”, “내 돈으로 직접” 등의 내용을 포함\n가짜 리뷰 : “업체로부터 금전적 지원”, “후원을 받았다”, “원고료를 지원 받았다“ 등의 내용을 포함\n\n이렇게 수집한 데이터를 분석한 결과, 두 집단 간 통계적으로 유의미한 차이가 있음을 확인했습니다.\n\n\n2. 기계학습이 궁금해요.\n\n기계학습은 인공지능의 한 분야로 사람이 학습하듯 \n컴퓨터에게 수많은 데이터를 주고 학습하게 함으로써 새로운 지식을 얻어내도록 합니다.\n\n기계학습을 위한 방법론은 굉장히 다양하지만 본 서비스에서는 총 5가지의 알고리즘을 사용했으며 이는 다음과 같습니다.\n1. SVM(linear)\n2. SVM(ref)\n3. KNN\n4. Naive Bayes\n5. Random Forest\n\n각각의 알고리즘이 개별적인 리뷰 판별 모델을 만들고 우리의 서비스는 이를 종합하여 결과를 제공합니다.\n해당 리뷰 판별기는 평균적으로 80%의 정확도를 보입니다.\n\n"
+    new_win.geometry("500x600")
+    sen = "\n1. 진짜 리뷰와 가짜 리뷰 글이 정말로 차이가 있나요?\n\n저희는 이를 검증하기 위해 네이버 블로그 중 맛집에 관련된 포스팅을 수집했습니다.\n수집한 포스팅은 총 11510개로 진짜 리뷰는 5368, 거짓 리뷰는 5782개였습니다.\n\n수집 리뷰는 특정 어휘 포함 여부에 따라 진짜 혹은 가짜로 분류되었습니다..\n\n진짜 리뷰 : “사비로 먹었다”, “내 돈으로 직접”\n가짜 리뷰 : “업체로부터 금전적 지원”, “후원을 받았다”, “원고료를 지원 받았다“\n\n이렇게 수집한 데이터를 분석한 결과, \n두 집단 간 통계적으로 유의미한 차이가 있음을 확인했습니다.\n\n\n2. 기계학습이 궁금해요.\n\n기계학습은 인공지능의 한 분야로 사람이 학습하듯 \n컴퓨터에게 수많은 데이터를 주고 학습하게 함으로써 새로운 지식을 얻어내도록 합니다.\n\n기계학습을 위한 방법론은 굉장히 다양하지만\n본 서비스에서는 총 5가지의 알고리즘을 사용했으며 이는 다음과 같습니다.\n1. SVM(linear)\n2. SVM(ref)\n3. KNN\n4. Naive Bayes\n5. Random Forest\n\n각각의 알고리즘이 개별적인 리뷰 판별 모델을 만들고\n우리의 서비스는 이를 종합하여 결과를 제공합니다.\n해당 리뷰 판별기는 평균적으로 80%의 정확도를 보입니다.\n\n"
 
-    info_sen = Label(new_win, text=sen)
+    ver_sen = Label(new_win, text="\n 0.1.0 ver.\n- - - - - - -\n해당 서비스는 기계학습을 통해 만들어진 리뷰 판별 모델을 이용하여 리뷰를 분석합니다.")
+    ver_sen.grid(padx=0, pady=0)
+    info_sen = Label(new_win, text=sen,justify=LEFT)
     info_sen.grid(padx=0, pady=0)
     return
 
@@ -44,13 +46,13 @@ def result_pop(TF):  # 새로운 창을 띄우기!
     new_win.geometry("300x150")
 
     if TF == True:
-        result_sen = Label(new_win, text="참일 확률이 높습니다", font="Helvetica -20 bold")
+        result_sen = Label(new_win, text="해당 리뷰는 \n 참일 확률이 높습니다", font="Helvetica -20 bold")
     elif TF == False:
-        result_sen = Label(new_win, text="거짓일 확률이 높습니다", font="Helvetica -20 bold")
+        result_sen = Label(new_win, text="해당 리뷰는 \n 거짓일 확률이 높습니다", font="Helvetica -20 bold")
     elif TF == "WURL":
-        result_sen = Label(new_win, text="잘못된 URL 입니다", font="Helvetica -20 bold")
+        result_sen = Label(new_win, text="잘못된 URL 입니다", font="Helvetica -25 bold")
     else:
-        result_sen = Label(new_win, text="ERROR", font="Helvetica -20 bold")
+        result_sen = Label(new_win, text="ERROR", font="Helvetica -25 bold")
 
     result_sen.grid(padx=60, pady=40)
     return
