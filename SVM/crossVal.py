@@ -107,5 +107,13 @@ def clf(dataset_data,dataset_labels,dataset4doc2vec):
         print("Accuracy: %0.2f (+/- %0.2f)" % (scores2.mean(), scores2.std() * 2))
         print("time: ", (end_time2-start_time2)/60,"분")
 
+    from sklearn.ensemble import VotingClassifier
+
+    voting_clf = VotingClassifier(
+        estimators=[('lr', 'clf1'), ('rf', 'clf2'),('svc', 'clf3')],
+        voting = 'soft')
+
+
+
 
 tokenize(nlp,data_)
