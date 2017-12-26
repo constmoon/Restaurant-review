@@ -20,16 +20,26 @@ def analysis():
 
     
     # 결과가 참 거짓 여부에 따라 TRUE, FALSE 문자열로 넘겨준다.
-    
-    #result_pop(TF)
-    return 
+    TF=True
+    result_pop(TF)
+    return
 
 def result_pop(TF): # 새로운 창을 띄우기!
     new_win = Tk()
     new_win.title("결과창 두근두근!")
-    new_win.geometry("300x200")
-    
-    result_sen = Label(new_win, text=TF)
+    new_win.geometry("300x150")
+
+    if TF==True:
+        result_sen = Label(new_win, text="참일 확률이 높습니다", font="Helvetica -20 bold")
+    elif TF==False:
+        result_sen = Label(new_win, text="거짓일 확률이 높습니다", font="Helvetica -20 bold")
+    elif TF=="WURL":
+        result_sen = Label(new_win, text="잘못된 URL 입니다", font="Helvetica -20 bold")
+    else:
+        result_sen = Label(new_win, text="ERROR", font="Helvetica -20 bold")
+
+        
+    result_sen.grid(padx=60,pady=40)
     return
 
 #쓸데없는 스크립트 제거함수
@@ -118,7 +128,8 @@ def croll(urlinput):
         where=urlinput.find("blog")
         url="http://m."+urlinput[where:]
     else:
-        print("Wrong URL")
+        #print("Wrong URL")
+        result_pop("WURL")
         sys.exit(1)
         
     '''
@@ -218,7 +229,7 @@ def croll(urlinput):
 
 window = Tk()
 window.title("Real_or_Fake")
-window.geometry("550x300")
+window.geometry("550x350")
 
 
 intro = Label(window, text="Service name", font="Helvetica -30 bold")
